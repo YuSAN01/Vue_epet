@@ -6,7 +6,7 @@
         </span>
         <span>首页</span>
       </span>
-      <span class="guide_item" :class="{on: isCurrent('/Type')}" @click="goto('/Type')">
+      <span class="guide_item" :class="{on: isCurrent('/Type/Types')}" @click="goto('/Type')">
         <span>
           <i class="iconfont icon-fenlei"></i>
         </span>

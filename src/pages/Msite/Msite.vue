@@ -1,6 +1,8 @@
 <template>
 <div>
+  <!--头部-->
   <header>
+    <!--头部上半部分-->
     <div class="headerbox">
       <div class="headermain">
         <div class="headerup">
@@ -20,6 +22,7 @@
         </div>
       </div>
     </div>
+    <!--头部下半部分-->
     <div class="headerbox2">
       <div class="swiper-container banner">
         <div class="swiper-wrapper">
@@ -48,7 +51,8 @@
       </div>
     </div>
   </header>
-  <div class="swiper-container case">
+<!--轮播内容-->
+  <div class="swiper-container case" id="cases">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img src="./images/9f49bbf054e4dcab567e1584f48db3f0.jpg" alt="">
@@ -60,8 +64,9 @@
         <img src="./images/b898562338c7f04ac9b2fa3e5aec8b4c.jpg" alt="">
       </div>
     </div>
-    <div class="swiper-pagination case"></div>
+    <div class="swiper-pagination"></div>
   </div>
+  <!--分类导航-->
   <div class="homecontainer">
     <div class="columnnavdiv">
       <ul>
@@ -78,25 +83,53 @@
       </ul>
     </div>
   </div>
+  <!--新人专享-->
+  <div class="noobexclusive">
+    <img src="./images/xinrenzhuanxiang.gif" alt="">
+  </div>
+  <!--每日疯抢-->
+  <div class="surpriseday">
+    <!--每日疯抢：时间日期-->
+    <div class="surprise">
+      <div class="meirifengqiangimg">
+        <img src="./images/meirifengqiang.png" alt="">
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <!--每日疯抢：商品列表-->
+    <div class="surpriseList"></div>
+  </div>
+
 </div>
 
 
 </template>
 <script>
+  import Swiper from 'swiper'
+  import 'swiper/dist/css/swiper.min.css'
     export default {
       mounted(){
-        const swiper = new Swiper('.case', {
+
+        let swiper = new Swiper('#cases', {
+          centeredSlides: true,
+          loop:true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
           pagination: {
-            el: '.case .swiper-pagination',
-            loop:true,
-            autoplay: {
-              delay: 3000,
-              stopOnLastSlide: false,
-              disableOnInteraction: true,
-            }
+            el: '.swiper-pagination',
+            clickable: true,
           }
+
         });
-        const myswiper = new Swiper('.banner', {
+
+
+
+
+        const myswiper = new Swiper('.headerbox2 .banner', {
           slidesPerView: 5,
           spaceBetween: 30,
         });
@@ -130,23 +163,23 @@
     margin-bottom: -11px;
     >.swiper-container
       >.swiper-wrapper
-        white-space: nowrap
+        white-space: nowrap   //文本永不换行
         >.swiper-slide
-          text-align center
+          text-align center    //文字居中
         >.swiper-slide:eq(4)
           margin-right 15px
 
 
   .swiper-container.case
     width 100%
-    height 160px
+
     .swiper-wrapper
       .swiper-slide
         width 100%
-        height 100%
+
         img
           width 100%
-          height 100%
+
   .homecontainer
     width 100%
     height 180px
@@ -154,5 +187,31 @@
       width 100%
       height 100%
       ul
+        display flex
+        flex-wrap wrap   //溢出换行
+        //>li
+          //&:nth-child(3)   //选择器 选择匹配父元素下的子元素
+        li>img
+          width 74px
+          height 90px
+  .noobexclusive
+    width 100%
+    img
+      width 100%
+  .surpriseday
+    width 100%
+    height 170px
+    .surprise
+      box-sizing border-box
+      width 100%
+      height 40px
+      padding  10px
+      /*background-color: green*/
+      .meirifengqiangimg
         float left
+        width 85px
+        height 20px
+        img
+          width 100%
+          height 100%
 </style>
